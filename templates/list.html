@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% include 'todo.html' %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+{% load static %}
+
+{% block title %}
+<title>ToDoApp</title>
+{% endblock title %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/new.css' %}">
+{% endblock links %}
+
+{% block content %}
+ <div class='row col-md-8 col-md-push-2'>
+<div class='col-md-10 clo-md-push-1'>
+{% if user.is_authenticated %}
+{% for todo in todos %}
+
+<ul class="list-group" style="box-shadow: 1px 0 10px grey;">
+    <li class="list-group-item"> <a href ="{% url 'detail' todo.id %}" >{{todo.title}} </a>
+    <p  id='demo' class="text-muted">{{todo.start_date|naturalday}} at {{todo.start_time|naturaltime}}</p>
+    </li>
+   
+</ul>
+{% endfor %}
+<div class="col-md-6 col-md-push-4 col-xs-6 col-xs-push-4" >
+<a class="btn btn-primary btn-sm btn-centre" href="{% url 'home' %}" >Add Todo</a>
+</div>
+{% else %}
+<div class="alert alert-info" role="alert">
+    <strong>Login to add a todo list</strong>
+</div>
+{% endif %}
+
+
+</div>
+</div>
+ <script src="{% static 'js/new.js' %}">
+    </script>
+<script src="{% static 'js/jquery.min.js' %}">
+    </script>
+
+
+{% endblock content %}

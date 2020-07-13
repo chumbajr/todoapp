@@ -1,0 +1,35 @@
+.container{
+  margin:  20px;
+}
+.navbar{
+  background: rgb(15, 41, 36);
+  color: #fff;
+  padding: 10px;
+}
+.nav >li>a{
+  color: #fff;
+}
+.nav >li>a:hover{
+
+  color: #000;
+}
+.nav >li:hover{
+  background-color: transparent;
+}
+.fa{
+  padding-right: 10px;
+}
+@keyframes new{
+	40%{  box-shadow: 1px 0 10px green;  }
+	100%{ box-shadow: 1px 0 10px  red;
+	}
+}
+
+form{
+  box-shadow: 1px 0 10px green;
+  animation: new 2s ease-in;
+  animation-iteration-count: infinite;
+  box-sizing: border-box;
+  padding-bottom: 40px;
+  height: auto;
+}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title>ToDoApp</title>
+{% endblock title %}
+
+{% block content %}
+ <div class='row col-md-8 col-md-push-2'>
+<div class='col-md-10 clo-md-push-1'>
+
+
+<a href = "{% url 'list_view' %}"><i class="fa fa-arrow-circle-left " aria-hidden="true"></i></a>
+<ul class="list-group ">
+    <li class="list-group-item">
+   <p class="text-centre"> {{todo.title}}</p> <hr>
+    <a href ="{% url 'delete' todo.pk%}"  class= 'btn btn-sm btn-danger mb-2'>Delete </a>
+    <a href ="{% url 'update' todo.pk%}"  class= 'btn btn-sm btn-info '>Update </a>
+
+    </li>
+</ul>
+
+
+</div>
+</div>
+{% endblock content %}

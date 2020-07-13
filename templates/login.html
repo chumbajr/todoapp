@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title>Login</title>
+{% endblock title %}
+
+{% block content %}
+ <div class='row col-md-8 col-md-push-2'>
+<div class='col-md-10 clo-md-push-1 col-xs-10 col-xs-push-1'>
+<form method='post' class="col-md-8 p-3" >
+{% csrf_token %}
+<h3 class ="text-success text-centre" style="backround-color:teal;">Login</h3>
+{{form|crispy}}
+<div class="mt-2">
+</div>
+<div class="col-md-6 col-md-push-4 col-xs-6 col-xs-push-4" >
+<button class="btn btn-primary btn-sm btn-centre" type ='submit'>Login</button>
+</div>
+<form>
+</div>
+</div>
+{% endblock content %}

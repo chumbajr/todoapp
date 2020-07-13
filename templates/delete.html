@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+<title>Login</title>
+{% endblock title %}
+
+{% block content %}
+ <div class='row col-md-8 col-md-push-2'>
+<div class='col-md-10 clo-md-push-1'>
+<a href = "{% url 'detail' todo.id%}"><i class="fa fa-arrow-circle-left " aria-hidden="true"></i>Back</a>
+<form method='post'>
+{% csrf_token %}
+{{form|crispy}}
+<div class="alert alert-primary" role="alert">
+    <strong class='text-danger'>Are you sure you want to delete "{{todo.title}}"?</strong>
+</div>
+<button type="submit" id='submit' class="btn btn-danger">Delete</button>
+<script src ={% static 'js/delete.js' %}>
+</script>
+<a href="{% url 'detail' todo.id %}" class="btn btn-primary btn-sm">Cancel</a>
+<form>
+</div>
+</div>
+{% endblock content %}

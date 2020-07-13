@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    {% endblock title %}
+    
+    {% block links %}
+    {% endblock links %}
+    <link rel="stylesheet" href="{% static 'css/master.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-inverse "  >
+            <div class="container-fluid col-md-8 col-md-push-2">
+                <div class="navbar-header " ><a class="navbar-brand navbar-link "><span class="fa fa-edit"></span>ToDo</a>
+                    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                </div>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav nav-pills nav-stacked navbar-nav">
+                    </ul>
+                    {% if user.is_authenticated %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="pt-2"><span class = "fa fa-user">{{user.username}}</span><a><li>
+                        <li role="presentation"><a href="{% url 'logout' %}"<span class = "fa fa-sign-out">Logout</span> </a></li>
+                    </ul>
+                    {% else %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li role="presentation"><a href="{% url 'login' %}"><span class="fa fa-sign-in">Login</span> </a></li>
+                        <li role="presentation"><a href="#"><span class="fa fa-user-plus">Register</span> </a></li>
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% block content %}
+        
+    {% endblock content %}
+
+    <script src="{% static 'js/jquery.min.js' %}" charset="utf-8"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}" charset="utf-8"></script>
+    <script src="{% static 'js/app.js' %}" charset="utf-8"></script>
+
+</body>
+</html>
